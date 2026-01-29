@@ -17,4 +17,7 @@ Go言語の基礎を学習した記録を残すためのログです。
 \- Go Tour を開始
 
 \- Goの基本構文（package / func / import）を学習
+##    Day 2
+
+##    Day 3
 
