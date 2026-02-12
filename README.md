@@ -21,9 +21,10 @@ Go言語の基礎を学習した記録を残すためのログです。
 
 ### Day 2｜Go Tour：Basics
 
-\- day01/main.go にて基本構文を確認
+\- Go Tour二日目
+\- 復習など
 
-\- fmt.Println による標準出力を実行
 
 ## day3
-
+\- Go Tour三日目
+\- 復習など
