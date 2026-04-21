@@ -11,6 +11,8 @@ type User struct {
 	Age  int    `json:"age"`
 }
 
+var users []User
+
 func createUserHandler(w http.ResponseWriter, r *http.Request) {
 	if r.Method != http.MethodPost {
 		http.Error(w, "Method Not Allowed", http.StatusMethodNotAllowed)
@@ -18,6 +20,7 @@ func createUserHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	var user User
+	
 
 	err := json.NewDecoder(r.Body).Decode(&user)
 	if err != nil {
@@ -25,17 +28,22 @@ func createUserHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	users = append(users, user)
+
 	w.Header().Set("Content-Type", "application/json")
 	json.NewEncoder(w).Encode(user)
 }
 
+func getUsersHandler(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(users)
+}
+
 func main() {
 	http.HandleFunc("/user", createUserHandler)
+	http.HandleFunc("/users", getUsersHandler) 
 
 	fmt.Println("Server running on :8080")
 	http.ListenAndServe(":8080", nil)
 
-	
 }
-
-
